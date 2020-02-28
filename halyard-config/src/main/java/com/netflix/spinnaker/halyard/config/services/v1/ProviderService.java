@@ -29,6 +29,7 @@ import com.netflix.spinnaker.halyard.config.model.v1.providers.huaweicloud.Huawe
 import com.netflix.spinnaker.halyard.config.model.v1.providers.kubernetes.KubernetesProvider;
 import com.netflix.spinnaker.halyard.config.model.v1.providers.oracle.OracleBMCSProvider;
 import com.netflix.spinnaker.halyard.config.model.v1.providers.oracle.OracleProvider;
+import com.netflix.spinnaker.halyard.config.model.v1.providers.yandex.YandexCloudProvider;
 import com.netflix.spinnaker.halyard.config.model.v1.providers.tencentcloud.TencentCloudProvider;
 import com.netflix.spinnaker.halyard.config.problem.v1.ConfigProblemBuilder;
 import com.netflix.spinnaker.halyard.core.problem.v1.Problem.Severity;
@@ -139,6 +140,9 @@ public class ProviderService {
         break;
       case ORACLEBMCS:
         providers.setOraclebmcs((OracleBMCSProvider) provider);
+        break;
+      case YANDEX:
+        providers.setYandex((YandexCloudProvider) provider);
         break;
       case TENCENTCLOUD:
         providers.setTencentcloud((TencentCloudProvider) provider);

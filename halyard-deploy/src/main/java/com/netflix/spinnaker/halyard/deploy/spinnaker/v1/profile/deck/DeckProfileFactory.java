@@ -12,7 +12,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package com.netflix.spinnaker.halyard.deploy.spinnaker.v1.profile.deck;
@@ -37,6 +36,7 @@ import com.netflix.spinnaker.halyard.config.model.v1.providers.huaweicloud.Huawe
 import com.netflix.spinnaker.halyard.config.model.v1.providers.kubernetes.KubernetesProvider;
 import com.netflix.spinnaker.halyard.config.model.v1.providers.tencentcloud.TencentCloudAccount;
 import com.netflix.spinnaker.halyard.config.model.v1.providers.tencentcloud.TencentCloudProvider;
+import com.netflix.spinnaker.halyard.config.model.v1.providers.yandex.YandexCloudProvider;
 import com.netflix.spinnaker.halyard.config.model.v1.security.UiSecurity;
 import com.netflix.spinnaker.halyard.config.services.v1.AccountService;
 import com.netflix.spinnaker.halyard.config.services.v1.VersionsService;
@@ -202,6 +202,10 @@ public class DeckProfileFactory extends RegistryBackedProfileFactory {
         bindings.put("huaweicloud.default.region", regionList.get(0));
       }
     }
+    // Configure Yandex
+    YandexCloudProvider yandexCloudProvider =
+            deploymentConfiguration.getProviders().getYandex();
+    bindings.put("yandex.default.account", yandexCloudProvider.getPrimaryAccount());
 
     // Configure TencentCloud
     TencentCloudProvider tencentCloudProvider =

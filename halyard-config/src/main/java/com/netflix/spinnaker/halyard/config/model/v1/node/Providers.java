@@ -1,7 +1,7 @@
 /*
- * Copyright 2016 Google, Inc.
+ * Copyright 2020 Netflix, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License")
+ * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
@@ -37,6 +37,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+
+import com.netflix.spinnaker.halyard.config.model.v1.providers.yandex.YandexCloudProvider;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -60,6 +62,7 @@ public class Providers extends Node implements Cloneable {
 
   OracleProvider oracle = new OracleProvider();
   CloudFoundryProvider cloudfoundry = new CloudFoundryProvider();
+  YandexCloudProvider yandex = new YandexCloudProvider();
 
   @Override
   public String getNodeName() {
