@@ -525,6 +525,23 @@
  * [**hal config provider tencentcloud bakery edit**](#hal-config-provider-tencentcloud-bakery-edit)
  * [**hal config provider tencentcloud disable**](#hal-config-provider-tencentcloud-disable)
  * [**hal config provider tencentcloud enable**](#hal-config-provider-tencentcloud-enable)
+ * [**hal config provider yandex**](#hal-config-provider-yandex)
+ * [**hal config provider yandex account**](#hal-config-provider-yandex-account)
+ * [**hal config provider yandex account add**](#hal-config-provider-yandex-account-add)
+ * [**hal config provider yandex account delete**](#hal-config-provider-yandex-account-delete)
+ * [**hal config provider yandex account edit**](#hal-config-provider-yandex-account-edit)
+ * [**hal config provider yandex account get**](#hal-config-provider-yandex-account-get)
+ * [**hal config provider yandex account list**](#hal-config-provider-yandex-account-list)
+ * [**hal config provider yandex bakery**](#hal-config-provider-yandex-bakery)
+ * [**hal config provider yandex bakery base-image**](#hal-config-provider-yandex-bakery-base-image)
+ * [**hal config provider yandex bakery base-image add**](#hal-config-provider-yandex-bakery-base-image-add)
+ * [**hal config provider yandex bakery base-image delete**](#hal-config-provider-yandex-bakery-base-image-delete)
+ * [**hal config provider yandex bakery base-image edit**](#hal-config-provider-yandex-bakery-base-image-edit)
+ * [**hal config provider yandex bakery base-image get**](#hal-config-provider-yandex-bakery-base-image-get)
+ * [**hal config provider yandex bakery base-image list**](#hal-config-provider-yandex-bakery-base-image-list)
+ * [**hal config provider yandex bakery edit**](#hal-config-provider-yandex-bakery-edit)
+ * [**hal config provider yandex disable**](#hal-config-provider-yandex-disable)
+ * [**hal config provider yandex enable**](#hal-config-provider-yandex-enable)
  * [**hal config pubsub**](#hal-config-pubsub)
  * [**hal config pubsub google**](#hal-config-pubsub-google)
  * [**hal config pubsub google disable**](#hal-config-pubsub-google-disable)
@@ -7128,6 +7145,7 @@ hal config provider [subcommands]
  * `kubernetes`: Manage and view Spinnaker configuration for the kubernetes provider
  * `oracle`: Manage and view Spinnaker configuration for the oracle provider
  * `tencentcloud`: Manage and view Spinnaker configuration for the tencentcloud provider
+ * `yandex`: Manage and view Spinnaker configuration for the yandex provider
 
 ---
 ## hal config provider appengine
@@ -10089,6 +10107,329 @@ Set the oracle provider as enabled
 #### Usage
 ```
 hal config provider oracle enable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider yandex
+
+Manage and view Spinnaker configuration for the yandex provider
+
+#### Usage
+```
+hal config provider yandex [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `account`: Manage and view Spinnaker configuration for the yandex provider's account
+ * `bakery`: Manage and view Spinnaker configuration for the yandex provider's image bakery configuration.
+ * `disable`: Set the yandex provider as disabled
+ * `enable`: Set the yandex provider as enabled
+
+---
+## hal config provider yandex account
+
+Manage and view Spinnaker configuration for the yandex provider's account
+
+#### Usage
+```
+hal config provider yandex account ACCOUNT [parameters] [subcommands]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add an account to the yandex provider.
+ * `delete`: Delete a specific yandex account by name.
+ * `edit`: Edit an account in the yandex provider.
+ * `get`: Get the specified account details for the yandex provider.
+ * `list`: List the account names for the yandex provider.
+
+---
+## hal config provider yandex account add
+
+Add an account to the yandex provider.
+
+#### Usage
+```
+hal config provider yandex account add ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--account-type`: The type of account.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
+ * `--folder-id`: (*Required*) The ID of the folder to use.
+ * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. 
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to view this account's cloud resources.
+ * `--required-group-membership`: (*Default*: `[]`) A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--write-permissions`: (*Default*: `[]`) A user must have at least one of these roles in order to make changes to this account's cloud resources.
+
+
+---
+## hal config provider yandex account delete
+
+Delete a specific yandex account by name.
+
+#### Usage
+```
+hal config provider yandex account delete ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider yandex account edit
+
+Edit an account in the yandex provider.
+
+#### Usage
+```
+hal config provider yandex account edit ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--account-type`: The type of account.
+ * `--add-read-permission`: Add this permission to the list of read permissions.
+ * `--add-required-group-membership`: Add this group to the list of required group memberships.
+ * `--add-write-permission`: Add this permission to the list of write permissions.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--environment`: The environment name for the account. Many accounts can share the same environment (e.g. dev, test, prod)
+ * `--folder-id`: The ID of the folder to use.
+ * `--json-path`: The path to a JSON service account that Spinnaker will use as credentials. 
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--provider-version`: Some providers support multiple versions/release tracks. This allows you to pick the version of the provider (not the resources it manages) to run within Spinnaker.
+ * `--read-permissions`: A user must have at least one of these roles in order to view this account's cloud resources.
+ * `--remove-read-permission`: Remove this permission from the list of read permissions.
+ * `--remove-required-group-membership`: Remove this group from the list of required group memberships.
+ * `--remove-write-permission`: Remove this permission to from list of write permissions.
+ * `--required-group-membership`: A user must be a member of at least one specified group in order to make changes to this account's cloud resources.
+ * `--write-permissions`: A user must have at least one of these roles in order to make changes to this account's cloud resources.
+
+
+---
+## hal config provider yandex account get
+
+Get the specified account details for the yandex provider.
+
+#### Usage
+```
+hal config provider yandex account get ACCOUNT [parameters]
+```
+
+#### Parameters
+`ACCOUNT`: The name of the account to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider yandex account list
+
+List the account names for the yandex provider.
+
+#### Usage
+```
+hal config provider yandex account list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider yandex bakery
+
+Manage and view Spinnaker configuration for the yandex provider's image bakery configuration.
+
+#### Usage
+```
+hal config provider yandex bakery [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `base-image`: Manage and view Spinnaker configuration for the yandex provider's base image.
+ * `edit`: Edit the yandex provider's bakery default options.
+
+---
+## hal config provider yandex bakery base-image
+
+Manage and view Spinnaker configuration for the yandex provider's base image.
+
+#### Usage
+```
+hal config provider yandex bakery base-image [parameters] [subcommands]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+#### Subcommands
+ * `add`: Add a base image for the yandex provider's bakery.
+ * `delete`: Delete a specific yandex base image by name.
+ * `edit`: Edit a base image for the yandex provider's bakery.
+ * `get`: Get the specified base image details for the yandex provider.
+ * `list`: List the base image names for the yandex provider.
+
+---
+## hal config provider yandex bakery base-image add
+
+Add a base image for the yandex provider's bakery.
+
+#### Usage
+```
+hal config provider yandex bakery base-image add BASE-IMAGE [parameters]
+```
+
+#### Parameters
+`BASE-IMAGE`: The name of the base image to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--detailed-description`: A long description to help human operators identify the image.
+ * `--image-family`: No desc
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--package-type`: This is used to help Spinnaker's bakery download the build artifacts you supply it with. For example, specifying 'deb' indicates that your artifacts will need to be fetched from a debian repository.
+ * `--short-description`: A short description to help human operators identify the image.
+ * `--source-image-family`: The source image family to create the image from. The newest, non-deprecated image is used.
+ * `--source-image-name`: The source image. If both source image and source image family are set, source image will take precedence.
+ * `--template-file`: This is the name of the packer template that will be used to bake images from this base image. The template file must be found in this list [https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer](https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer), or supplied as described here: [https://spinnaker.io/setup/bakery/](https://spinnaker.io/setup/bakery/)
+
+
+---
+## hal config provider yandex bakery base-image delete
+
+Delete a specific yandex base image by name.
+
+#### Usage
+```
+hal config provider yandex bakery base-image delete BASE-IMAGE [parameters]
+```
+
+#### Parameters
+`BASE-IMAGE`: The name of the base image to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider yandex bakery base-image edit
+
+Edit a base image for the yandex provider's bakery.
+
+#### Usage
+```
+hal config provider yandex bakery base-image edit BASE-IMAGE [parameters]
+```
+
+#### Parameters
+`BASE-IMAGE`: The name of the base image to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--detailed-description`: A long description to help human operators identify the image.
+ * `--id`: This is the identifier used by your cloud to find this base image.
+ * `--image-family`: No desc
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--package-type`: This is used to help Spinnaker's bakery download the build artifacts you supply it with. For example, specifying 'deb' indicates that your artifacts will need to be fetched from a debian repository.
+ * `--short-description`: A short description to help human operators identify the image.
+ * `--source-image-family`: The source image family to create the image from. The newest, non-deprecated image is used.
+ * `--source-image-name`: The source image. If both source image and source image family are set, source image will take precedence.
+ * `--template-file`: This is the name of the packer template that will be used to bake images from this base image. The template file must be found in this list [https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer](https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer), or supplied as described here: [https://spinnaker.io/setup/bakery/](https://spinnaker.io/setup/bakery/)
+
+
+---
+## hal config provider yandex bakery base-image get
+
+Get the specified base image details for the yandex provider.
+
+#### Usage
+```
+hal config provider yandex bakery base-image get BASE-IMAGE [parameters]
+```
+
+#### Parameters
+`BASE-IMAGE`: The name of the base image to operate on.
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider yandex bakery base-image list
+
+List the base image names for the yandex provider.
+
+#### Usage
+```
+hal config provider yandex bakery base-image list [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider yandex bakery edit
+
+Edit the yandex provider's bakery default options.
+
+#### Usage
+```
+hal config provider yandex bakery edit [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+ * `--template-file`: This is the name of the packer template that will be used to bake images from this base image. The template file must be found in this list [https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer](https://github.com/spinnaker/rosco/tree/master/rosco-web/config/packer), or supplied as described here: [https://spinnaker.io/setup/bakery/](https://spinnaker.io/setup/bakery/)
+ * `--zone`: Set the default zone your images will be baked in.
+
+
+---
+## hal config provider yandex disable
+
+Set the yandex provider as disabled
+
+#### Usage
+```
+hal config provider yandex disable [parameters]
+```
+
+#### Parameters
+ * `--deployment`: If supplied, use this Halyard deployment. This will _not_ create a new deployment.
+ * `--no-validate`: (*Default*: `false`) Skip validation.
+
+
+---
+## hal config provider yandex enable
+
+Set the yandex provider as enabled
+
+#### Usage
+```
+hal config provider yandex enable [parameters]
 ```
 
 #### Parameters

@@ -14,17 +14,20 @@
  * limitations under the License.
  */
 
-package com.netflix.spinnaker.halyard.config.model.v1.providers.yandex;
+package com.netflix.spinnaker.halyard.cli.command.v1.config.providers.yandex;
 
-import com.netflix.spinnaker.halyard.config.model.v1.node.Account;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import com.netflix.spinnaker.halyard.cli.command.v1.config.providers.bakery.AbstractBaseImageCommand;
+import com.netflix.spinnaker.halyard.config.model.v1.node.Provider;
 
-@Data
-@EqualsAndHashCode(callSuper = true)
-public class YandexCloudAccount extends Account {
-  String endpoint;
-  String jsonPath;
-  String folder;
-  String accountType;
+public class YandexBaseImageCommand extends AbstractBaseImageCommand {
+  @Override
+  protected String getProviderName() {
+    return Provider.ProviderType.YANDEX.getName();
+  }
+
+  public YandexBaseImageCommand() {
+    super();
+    registerSubcommand(new YandexAddBaseImageCommand());
+    registerSubcommand(new YandexEditBaseImageCommand());
+  }
 }

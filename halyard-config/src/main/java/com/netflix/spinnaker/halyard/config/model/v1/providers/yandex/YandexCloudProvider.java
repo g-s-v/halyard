@@ -16,15 +16,28 @@
 
 package com.netflix.spinnaker.halyard.config.model.v1.providers.yandex;
 
-import com.netflix.spinnaker.halyard.config.model.v1.node.Provider;
+import com.netflix.spinnaker.halyard.config.model.v1.node.HasImageProvider;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class YandexCloudProvider extends Provider<YandexCloudAccount> implements Cloneable {
+public class YandexCloudProvider
+    extends HasImageProvider<YandexCloudAccount, YandexCloudBakeryDefaults> implements Cloneable {
+
+  static final String DEFAULT_ZONE = "ru-central1-a";
+  static final String DEFAULT_TEMPLATE_FILE = "yandex.json";
+
   @Override
   public ProviderType providerType() {
     return ProviderType.YANDEX;
+  }
+
+  @Override
+  public YandexCloudBakeryDefaults emptyBakeryDefaults() {
+    YandexCloudBakeryDefaults result = new YandexCloudBakeryDefaults();
+    result.setZone(DEFAULT_ZONE);
+    result.setTemplateFile(DEFAULT_TEMPLATE_FILE);
+    return result;
   }
 }

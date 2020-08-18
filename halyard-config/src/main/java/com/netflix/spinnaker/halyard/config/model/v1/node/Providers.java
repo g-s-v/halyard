@@ -1,7 +1,7 @@
 /*
- * Copyright 2020 Netflix, Inc.
+ * Copyright 2016 Google, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the "License")
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
@@ -32,13 +32,12 @@ import com.netflix.spinnaker.halyard.config.model.v1.providers.kubernetes.Kubern
 import com.netflix.spinnaker.halyard.config.model.v1.providers.oracle.OracleBMCSProvider;
 import com.netflix.spinnaker.halyard.config.model.v1.providers.oracle.OracleProvider;
 import com.netflix.spinnaker.halyard.config.model.v1.providers.tencentcloud.TencentCloudProvider;
+import com.netflix.spinnaker.halyard.config.model.v1.providers.yandex.YandexCloudProvider;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-
-import com.netflix.spinnaker.halyard.config.model.v1.providers.yandex.YandexCloudProvider;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

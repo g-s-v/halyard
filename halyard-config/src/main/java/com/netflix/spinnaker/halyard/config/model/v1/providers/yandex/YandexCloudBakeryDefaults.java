@@ -16,15 +16,12 @@
 
 package com.netflix.spinnaker.halyard.config.model.v1.providers.yandex;
 
-import com.netflix.spinnaker.halyard.config.model.v1.node.Account;
+import com.netflix.spinnaker.halyard.config.model.v1.node.BakeryDefaults;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Data
 @EqualsAndHashCode(callSuper = true)
-public class YandexCloudAccount extends Account {
-  String endpoint;
-  String jsonPath;
-  String folder;
-  String accountType;
+@Data
+public class YandexCloudBakeryDefaults extends BakeryDefaults<YandexCloudBaseImage> {
+  private String zone;
 }
