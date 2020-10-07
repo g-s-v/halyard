@@ -53,9 +53,7 @@ public class LocalGitDeckService extends DeckService implements LocalGitService<
   String deckSettingsLocalPath = "settings-local.js";
   String homeDotSpinnakerPath = "~/.spinnaker/";
   String deckPath = Paths.get(homeDotSpinnakerPath, deckSettingsPath).toString();
-
-  String startCommand =
-      String.join("\n", "export SETTINGS_PATH=" + deckPath, "yarn > /dev/null", "yarn start");
+  String startCommand;
 
   @Autowired String gitRoot;
 
@@ -63,6 +61,7 @@ public class LocalGitDeckService extends DeckService implements LocalGitService<
 
   @Override
   public ServiceSettings buildServiceSettings(DeploymentConfiguration deploymentConfiguration) {
+    init();
     Security security = deploymentConfiguration.getSecurity();
     if (security.getUiSecurity().getSsl().isEnabled()) {
       setEnvTrue("DECK_HTTPS");
@@ -81,6 +80,10 @@ public class LocalGitDeckService extends DeckService implements LocalGitService<
         .setArtifactId(getArtifactId(deploymentConfiguration.getName()))
         .setHost(security.getAuthn().isEnabled() ? "0.0.0.0" : getDefaultHost())
         .setEnabled(true);
+  }
+
+  private void init() {
+    setStartCommand(String.join("\n", "export SETTINGS_PATH=" + deckPath, "yarn > /dev/null", "yarn start"));
   }
 
   private void setEnvTrue(String var) {
